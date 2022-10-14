@@ -48,13 +48,14 @@ export default {
     border-radius: 20px;
     margin: 3px;
     color: white;
+    border-color: white;
   }
 
   .info {
-    background-color: blue;
+    background-color: rgb(64, 158, 255);
   }
   .danger {
-    background-color: red;
+    background-color: rgb(245, 108, 108);
   }
   .disabled {
     opacity: 0.5;

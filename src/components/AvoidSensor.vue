@@ -18,7 +18,7 @@ export default {
   mounted() {
     setInterval(async () => {
       await this.FetchState();
-    }, 100);
+    }, 1000);
   }
 }
 </script>

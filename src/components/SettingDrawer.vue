@@ -22,6 +22,11 @@
           <el-form-item class="px-2" label="ROI實際寬度(cm)">
             <el-input-number :step="0.1" v-model="params.cam.roi_acture_width" placeholder></el-input-number>
           </el-form-item>
+          
+          <el-form-item class="px-2" label="解析度">
+            {{img_resolution}}
+
+          </el-form-item>
         </el-form>
         <h2 class="border-bottom">好/壞參數</h2>
         <el-form size="large" label-width="155px" label-position="left">
@@ -86,6 +91,11 @@ export default {
         pick_mode: "pick_good"
       }
     };
+  },
+  computed: {
+    img_resolution() {
+      return this.params.cam.width / this.params.cam.roi_acture_width;
+    }
   },
   methods: {
     Open() {
