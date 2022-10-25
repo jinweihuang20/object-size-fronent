@@ -1,8 +1,10 @@
 import axios from "axios";
 
-export var baseURL = "http://192.168.0.103:5030";
-
-axios.defaults.baseURL = baseURL;
+export var baseURL = '';
+if (process.env.NODE_ENV != 'production') {
+  baseURL = "http://192.168.0.105:5030";
+  axios.defaults.baseURL = baseURL;
+}
 
 var motor_angle_Adjust_path = "/api/Motor/AngleAdjust";
 var MOTOR_SWING_PATH = "/api/Motor/Swing";
@@ -11,6 +13,7 @@ var MODE_SWITCH_PATH = "/api/Mode"
 var GET_PARAMETERS_PATH = "/api/parameters"
 var GET_VIDEO_IMG_PATH = "/video_img"
 var GET_BOARDDATA_PATH = "/api/boardData"
+var GET_INSPECTION_RESULT_PATH = "/api/inspection_result"
 
 
 export async function MotorAngleControl(angle) {
@@ -22,8 +25,8 @@ export async function GetAvoidSensorState() {
   return res.data;
 }
 
-export async function SwingMotorOnce() {
-  await axios.get(MOTOR_SWING_PATH);
+export async function SwingMotorOnce(motor_index = 0) {
+  await axios.get(MOTOR_SWING_PATH + `?motor_index=${motor_index}`);
 }
 
 export async function ModeSwitch(mode = 0) {
@@ -46,4 +49,9 @@ export async function GetVideoImg() {
 export async function GetBoardData() {
   var res = await axios.get(GET_BOARDDATA_PATH);
   return res.data;
+}
+
+export async function GetInspectionResult() {
+  var res = await axios.get(GET_INSPECTION_RESULT_PATH);
+  return JSON.parse(res.data);
 }

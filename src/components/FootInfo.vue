@@ -7,10 +7,10 @@
         :type="board_data.opt_mode=='1'?'':'danger'"
       >{{board_data.opt_mode=='1'?'Online':'Offline'}}</el-tag>
     </div>
-    <div>
+    <!-- <div>
       <span>WIFI</span>
       <el-tag effect="dark">{{board_data.wifi_ssid}}</el-tag>
-    </div>
+    </div>-->
     <div>
       <span>在席狀態</span>
       <el-tag
@@ -18,14 +18,14 @@
         :type="board_data.exist_sensor_state=='Clear'?'':'danger'"
       >{{board_data.exist_sensor_state=="Clear"?'Free':'Blocked'}}</el-tag>
     </div>
-    <div>
+    <!-- <div>
       <span>伺服角度</span>
       <el-tag effect="dark">{{board_data.servo_angle}}</el-tag>
     </div>
     <div>
       <span>最近一次動作命令</span>
       <el-tag effect="dark">{{board_data.last_rev_cmdByte}}</el-tag>
-    </div>
+    </div>-->
   </div>
 </template>
 

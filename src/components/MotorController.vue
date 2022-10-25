@@ -9,6 +9,12 @@
 <script>
 import { MotorAngleControl, SwingMotorOnce } from "@/apis/backend.js";
 export default {
+  props: {
+    motor_index: {
+      type: Number,
+      default: 0
+    },
+  },
   data() {
     return {
       angle: 0,
@@ -19,7 +25,7 @@ export default {
       await MotorAngleControl(this.angle);
     },
     async SwingOnce() {
-      await SwingMotorOnce();
+      await SwingMotorOnce(this.motor_index);
     }
   },
 };
